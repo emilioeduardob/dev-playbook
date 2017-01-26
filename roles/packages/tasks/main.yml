@@ -1,0 +1,17 @@
+---
+- homebrew: name={{item}} state=present
+  name: Install Dev Packages
+  with_items:
+    - git
+    - wget
+    - zsh
+    - tig
+    - the_silver_searcher
+    - elasticsearch
+    - postgresql
+    - node
+    - npm
+
+- name: Install bower
+  npm: name=bower global=yes
+  become: yes
