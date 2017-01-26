@@ -11,6 +11,7 @@
     - postgresql
     - node
     - npm
+    - awscli
 
 - name: Install bower
   npm: name=bower global=yes
