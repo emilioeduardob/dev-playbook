@@ -12,6 +12,7 @@
     - node
     - npm
     - awscli
+    - fzf
 
 - name: Install bower
   npm: name=bower global=yes
