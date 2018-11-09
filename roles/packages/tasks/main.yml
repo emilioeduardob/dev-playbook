@@ -17,5 +17,10 @@
     name: [pgadmin4, keepingyouawake, spectacle, slack, libreoffice, gimp, filezilla, vlc, transmission]
     state: present
 
+- name: Check for Rubies
+  shell: "rbenv versions | ag 2.5.1 |  wc -l"
+  register: rbenv_result
+
 - name: Install rubies
   command: rbenv install 2.5.1
+  when: rbenv_result.stdout | int == 0
