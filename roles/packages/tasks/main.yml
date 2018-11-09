@@ -1,19 +1,21 @@
 ---
-- homebrew: name={{item}} state=present
-  name: Install Dev Packages
-  with_items:
-    - git
-    - wget
-    - zsh
-    - tig
-    - the_silver_searcher
-    - elasticsearch
-    - postgresql
-    - node
-    - npm
-    - awscli
-    - fzf
+- name: Create projects directory
+  file: path=~/src state=directory
 
-- name: Install bower
-  npm: name=bower global=yes
-  become: yes
+- name: Update homebrew
+  homebrew:
+    update_homebrew=yes
+
+- name: Install packages
+  homebrew:
+    name: [git,wget,zsh,the_silver_searcher,postgresql,node,fzf, rbenv, rbenv-vars, rbenv-aliases]
+    state: present
+
+
+- name: Install Casks
+  homebrew_cask:
+    name: [pgadmin4, keepingyouawake, spectacle, slack, libreoffice, gimp, filezilla, vlc, transmission]
+    state: present
+
+- name: Install rubies
+  command: rbenv install 2.5.1
